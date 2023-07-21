@@ -75,6 +75,14 @@ clean:
 	find . -name "*.pyc" -delete
 	find . -name "__pycache__" -delete
 
+install-pipenv:
+	pip install pipenv
+
+install-dependencies:
+	export PIPENV_VENV_IN_PROJECT=1
+	pipenv install
+
+setup: install-pipenv install-dependencies
 
 # Help target to display available commands
 help:
