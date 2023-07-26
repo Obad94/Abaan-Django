@@ -17,7 +17,7 @@ SETTINGS = $(LOCAL_SETTINGS)
 # Define the virtual environment name
 VENV_NAME = .venv
 
-PIPENV = pipenv
+PIPENVIRON = pipenv
 # Automatically get the project and app directories
 PROJECT_DIR := $(shell dirname $(CURDIR))
 APP_DIR := $(CURDIR)
@@ -26,16 +26,21 @@ APP_DIR := $(CURDIR)
 PIPENV_SHELL = pipenv shell
 PIPENV_RUN = pipenv run
 
-PYTHON = python3
+PYTHON ?= python3
+PIP ?= pip3
 # Define manage.py command as $(MANAGE) for convenience
 MANAGE = $(PIPENV_RUN) $(PYTHON) manage.py
+
+export PYTHON_PATH := $(shell which $(PYTHON) 2>/dev/null)
+export PIP_PATH := $(shell which $(PIP) 2>/dev/null)
+export PIPENV := $(shell which $(PIPENVIRON) 2> /dev/null)
 
 
 # Default target when `make` is called without arguments
 all:
 	@echo "Running Server..."
-	@gnome-terminal --tab --title="Server" --command="bash -c '$(PIPENV_SHELL); make runserver SETTINGS=$(SETTINGS); exec bash'" > /dev/null 2>&1
-	@echo "Server & Celery running successfully."
+	@gnome-terminal --tab --title="Server" --command="bash -c 'make runserver SETTINGS=$(SETTINGS); exec bash'" > /dev/null 2>&1
+	@echo "Server running successfully."
 
 dir:
 	@echo "PROJECT_DIR: $(PROJECT_DIR)"
@@ -75,14 +80,46 @@ clean:
 	find . -name "*.pyc" -delete
 	find . -name "__pycache__" -delete
 
-install-pipenv:
-	pip install pipenv
+check-python-pip:
+	@echo "Checking for $(PYTHON) and $(PIP)..."
 
-install-dependencies:
+	@if [ -z "$(PYTHON_PATH)" ]; then \
+		echo "$(PYTHON) is not installed. Please install $(PYTHON) first."; \
+	else \
+		echo "Found $(PYTHON) at $(PYTHON_PATH):"; \
+		$(PYTHON_PATH) --version; \
+
+	fi
+
+	@if [ -z "$(PIP_PATH)" ]; then \
+		echo "$(PIP) is not installed. Please install $(PIP) first."; \
+	else \
+		echo "Found $(PIP) at $(PIP_PATH):"; \
+		$(PIP_PATH) --version; \
+	fi
+
+install-pipenv:
+	@if [ -z "$$PIP_PATH" ]; then \
+		echo "$(PIP) is not installed. Please install $(PIP) first."; \
+		exit 1; \
+	fi
+	$$PIP_PATH install pipenv
+
+install-dependencies: 
 	export PIPENV_VENV_IN_PROJECT=1
 	pipenv install
 
-setup: install-pipenv install-dependencies
+setup: check-python-pip install-pipenv install-dependencies
+
+
+uninstall-dependencies:
+	@read -p "Are you sure you want to uninstall all dependencies? (Y/n) " confirm; \
+	if [ "$$confirm" = "y" ] || [ "$$confirm" = "Y" ]; then \
+		$$PIP_PATH uninstall pipenv
+	else \
+		echo "Uninstall cancelled."; \
+	fi
+
 
 # Help target to display available commands
 help:
