@@ -31,6 +31,8 @@ PIP ?= pip3
 # Define manage.py command as $(MANAGE) for convenience
 MANAGE = $(PIPENV_RUN) $(PYTHON) manage.py
 
+SCRIPTS_DIR := config/scripts
+
 export PYTHON_PATH := $(shell which $(PYTHON) 2>/dev/null)
 export PIP_PATH := $(shell which $(PIP) 2>/dev/null)
 export PIPENV := $(shell which $(PIPENVIRON) 2> /dev/null)
@@ -70,6 +72,9 @@ createapp:
 	$(MANAGE) startapp $$app_name; \
 	mv $$app_name $(APP_DIR)/apps/
 	@echo "$$app_name app created successfully."
+	$(PYTHON) $(SCRIPTS_DIR)/add_to_installed_apps.py $$app_name
+	$(PYTHON) $(SCRIPTS_DIR)/edit_apps.py $(APP_DIR)/apps/$$app_name $$app_name; \
+
 
 # Run tests
 test:
