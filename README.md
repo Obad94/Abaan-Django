@@ -1,3 +1,14 @@
+
+
+![Python version](https://img.shields.io/badge/python-3.8-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) 
+![Build: make](https://img.shields.io/badge/Build-make-brightgreen?logo=GNU-Make&logoColor=white)
+![Version](https://img.shields.io/badge/version-1.0-blue.svg)
+[![Open Pull Requests](https://img.shields.io/github/issues-pr/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/pulls)
+[![Open Issues](https://img.shields.io/github/issues/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/issues)
+[![Forks](https://img.shields.io/github/forks/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/network/members)
+[![Stars](https://img.shields.io/github/stars/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/stargazers)
+
 # Abaan-Django Readme
 Welcome to the Abaan-Django readme! This readme provides comprehensive information and documentation for the Abaan-Django repository, which is a lucid Django production starter kit.
 
