@@ -22,6 +22,8 @@ PIPENVIRON = pipenv
 PROJECT_DIR := $(shell dirname $(CURDIR))
 APP_DIR := $(CURDIR)
 
+PROJECT_NAME := $(shell basename "$(APP_DIR)")
+
 # Ensure virtual environment is active before running any commands
 PIPENV_SHELL = pipenv shell
 PIPENV_RUN = pipenv run
@@ -37,7 +39,6 @@ export PYTHON_PATH := $(shell which $(PYTHON) 2>/dev/null)
 export PIP_PATH := $(shell which $(PIP) 2>/dev/null)
 export PIPENV := $(shell which $(PIPENVIRON) 2> /dev/null)
 
-
 # Default target when `make` is called without arguments
 all:
 	@echo "Running Server..."
@@ -47,6 +48,7 @@ all:
 dir:
 	@echo "PROJECT_DIR: $(PROJECT_DIR)"
 	@echo "APP_DIR: $(APP_DIR)"
+	@echo "PROJECT_NAME: $(PROJECT_NAME)"  
 	
 # Activate virtual environment
 venv:
@@ -125,6 +127,48 @@ uninstall-dependencies:
 		echo "Uninstall cancelled."; \
 	fi
 
+COLOR_RED = \033[0;31m
+COLOR_GREEN = \033[0;32m
+COLOR_YELLOW = \033[0;33m
+COLOR_RESET = \033[0m
+
+define confirm_prompt
+$(COLOR_YELLOW)Renaming the project name will result in the deletion of the current Virtual Environment.$(COLOR_RESET)
+$(COLOR_YELLOW)This is necessary to ensure that the new project name is selected correctly in the virtual environment.$(COLOR_RESET)
+$(COLOR_YELLOW)A new Virtual Environment will be installed with the updated project name.$(COLOR_RESET)
+$(COLOR_GREEN)Are you sure you want to continue? (Y/n) : $(COLOR_RESET)
+endef
+export confirm_prompt
+
+define change_shell
+$(COLOR_YELLOW)Kindly change to the renamed directory$(COLOR_RESET)
+endef
+export change_shell
+
+rename:
+	@read -p "Enter the new project name: " new_name; \
+	if [ -z "$$new_name" ]; then \
+		echo "Project name cannot be empty."; \
+	else
+		printf "$$confirm_prompt"; \
+		read -r confirm; \
+		if [ "$$confirm" = "y" ] || [ "$$confirm" = "Y" ]; then \
+			rm -rf .venv
+			sed -i 's/PROJECT_NAME := $(PROJECT_NAME)/PROJECT_NAME := $$new_name/g' Makefile; \
+			# Rename the project directory
+			mv $(PROJECT_DIR)/$(PROJECT_NAME) $(PROJECT_DIR)/$$new_name; \
+			rm -rf $(APP_DIR)
+			echo "Project successfully renamed to $$new_name..."; \
+			cd $(PROJECT_DIR)/$$new_name; \
+			tput setaf 3; \
+			echo "Warning: You are still in the old directory, kindly change your directory to $(PROJECT_DIR)/$$new_name"; \
+			tput sgr0; \
+			gnome-terminal --working-directory=$(PROJECT_DIR)/$$new_name -- bash -c "make setup && make all"; \
+
+		else \
+			echo "Project renaming cancelled."; \
+		fi
+	fi
 
 # Help target to display available commands
 help:
