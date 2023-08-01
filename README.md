@@ -8,7 +8,7 @@
 [![Open Issues](https://img.shields.io/github/issues/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/issues)
 [![Forks](https://img.shields.io/github/forks/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/network/members)
 [![Stars](https://img.shields.io/github/stars/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/stargazers)
-
+ 
 # Abaan-Django Readme
 Welcome to the Abaan-Django readme! This readme provides comprehensive information and documentation for the Abaan-Django repository, which is a lucid Django production starter kit.
 
