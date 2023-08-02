@@ -1,17 +1,17 @@
 
-
 [![Python version](https://img.shields.io/badge/Python-3.8-blue)](https://github.com/Obad94/Abaan-Django "Developed using the latest features and capabilities of Python3.")
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Obad94/Abaan-Django/blob/main/LICENSE "License: This project is released under the permissive MIT License.")
 [![Build: make](https://img.shields.io/badge/Build-MAKE-brightgreen?logo=GNU-Make&logoColor=white)](https://github.com/Obad94/Abaan-Django "Automatically built with Make, ensuring a smooth development process!") 
 [![Version](https://img.shields.io/badge/Version-1.0-blue.svg)](https://github.com/Obad94/Abaan-Django "Current Version: Stay up-to-date with the latest enhancements and bug fixes.")
+[![Maintained - yes](https://img.shields.io/badge/Maintained-Yes-green)](https://github.com/Obad94/Abaan-Django "The Repository is well Maintained.")
+[![Contributions - welcome](https://img.shields.io/badge/Contributions-Welcome-blueviolet)](https://github.com/Obad94/Abaan-Django/blob/main/CONTRIBUTING.md "Documentation on How to Contribute.")
+[![View - Documentation](https://img.shields.io/badge/View-Documentation-blue)](https://github.com/Obad94/Abaan-Django/wiki "Go to Project Documentation.")
+
 [![Open Pull Requests](https://img.shields.io/github/issues-pr/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/pulls "Pull Requests Welcome: Contribute to the project and let your changes shine!")
 [![Open Issues](https://img.shields.io/github/issues/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/issues "Open Issues: Contribute and help us make this project even better!")
 [![Forks](https://img.shields.io/github/forks/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/network/members "Collaborate with us! Fork this project and start contributing.")
 [![Stars](https://img.shields.io/github/stars/Obad94/Abaan-Django.svg)](https://github.com/Obad94/Abaan-Django/stargazers "Be one of the early supporters! Star this project now!")
-[![Maintained - yes](https://img.shields.io/badge/Maintained-Yes-green)](https://github.com/Obad94/Abaan-Django "The Repository is well Maintained.")
-[![Contributions - welcome](https://img.shields.io/badge/Contributions-Welcome-blueviolet)](https://github.com/Obad94/Abaan-Django/blob/main/CONTRIBUTING.md "Documentation on How to Contribute.")
-[![View - Documentation](https://img.shields.io/badge/View-Documentation-blue)](https://github.com/Obad94/Abaan-Django/wiki "Go to Project Documentation.")
- 
+
 # Abaan-Django Readme
 Welcome to the Abaan-Django readme! This readme provides comprehensive information and documentation for the Abaan-Django repository, which is a lucid Django production starter kit.
 
