@@ -43,12 +43,13 @@ Before you begin, please ensure that you have Python 3.x and pip installed on yo
 To get started with Abaan-Django, follow the steps below:
 
 #### Installation
-Clone the repository:
+Follow these steps to set up the environment and run Abaan Django.
 
-1. Clone the repository: `git clone https://github.com/Obad94/Abaan-Django.git`
-2. Change into the project directory: `cd Abaan`
-3. Run the setup target using Make to install the required packages and dependencies: `make setup`
-4. Start building your Django project on top of Abaan-Django.
+1. Fork the repository [here](https://github.com/Obad94/Abaan-Django/fork).
+2. Clone the forked repository: `git clone https://github.com/<YOUR-USERNAME>/Abaan-Django.git`
+3. Change into the project directory: `cd Abaan`
+4. Run the setup target using Make to install the required packages and dependencies: `make setup`
+5. Start building your Django project on top of Abaan-Django.
 
 ### Usage
 Detailed instructions on how to use Abaan-Django in your Django project will be provided here. This section will cover topics such as project structure, directory explanations, and how to utilize the included features effectively.
